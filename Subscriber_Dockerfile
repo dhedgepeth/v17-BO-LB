@@ -1,0 +1,26 @@
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
+WORKDIR /app
+EXPOSE 8080
+
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+ENV ASPNETCORE_ENVIRONMENT=Subscriber
+ENV ASPNETCORE_URLS=http://+:8080
+ARG BUILD_CONFIGURATION=Release
+
+WORKDIR /src
+COPY ["LoadBalanceReDo.Web/LoadBalanceReDo.Web.csproj", "."]
+RUN dotnet restore "./LoadBalanceReDo.Web.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "./LoadBalanceReDo.Web/LoadBalanceReDo.Web.csproj" -p:Configuration=$BUILD_CONFIGURATION -o /app/build
+
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+
+RUN dotnet publish "./LoadBalanceReDo.Web/LoadBalanceReDo.Web.csproj" -p:Configuration=$BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+
+ENTRYPOINT ["dotnet", "LoadBalanceReDo.Web.dll"]

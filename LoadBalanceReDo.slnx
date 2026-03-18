@@ -1,0 +1,14 @@
+<Solution>
+  <Project Path="LoadBalanceReDo.Web/LoadBalanceReDo.Web.csproj" />
+  <Folder Name="/Solution Files/">
+    <File Path=".dockerignore" />
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path=".umbraco" />
+    <File Path="NuGet.config" />
+    <File Path="Readme.md" />
+    <File Path="Subscriber_Dockerfile" />
+    <File Path="LoadBalanceReDo.Web/umbraco-cloud.json" />
+  </Folder>
+</Solution>
