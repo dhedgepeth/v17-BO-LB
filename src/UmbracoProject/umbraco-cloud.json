@@ -1,7 +1,17 @@
 {
   "Deploy": {
     "Project": {
-      "Workspaces": []
+      "Name": "load balance re do",
+      "Alias": "load-balance-re-do",
+      "Id": "19ef73dd-3d24-4650-8cc3-c5b30d5f3e15",
+      "Workspaces": [
+        {
+          "Id": "bb51ccec-a9c0-42b6-adbb-37127cb88227",
+          "Name": "Live",
+          "Type": "live",
+          "Url": "https://load-balance-re-do.useast01.umbraco.io"
+        }
+      ]
     },
     "Settings": {}
   },
