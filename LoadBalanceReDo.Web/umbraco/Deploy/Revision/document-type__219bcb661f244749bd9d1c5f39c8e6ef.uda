@@ -1,0 +1,92 @@
+{
+  "Name": "Office",
+  "Alias": "office",
+  "DefaultTemplate": "umb://template/019d3f3343ab7d60bbce4e56670b3fc4",
+  "AllowedTemplates": [
+    "umb://template/019d3f3343ab7d60bbce4e56670b3fc4"
+  ],
+  "HistoryCleanup": {},
+  "Icon": "icon-company",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "AllowedChildContentTypes": []
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [
+    {
+      "Key": "332056e4-5cd4-41b3-bbfc-e781461679bf",
+      "Name": "Office Holidays/Overrides",
+      "SortOrder": 2,
+      "Alias": "officeHolidays/Overrides",
+      "PropertyTypes": [
+        {
+          "Key": "cfeb5e75-46ba-4cef-808e-d86ab1973e97",
+          "Alias": "officeHolidays",
+          "DataType": "umb://data-type/6617bbc778ed423c888a39f3e52e2f93",
+          "Name": "Office Holidays"
+        }
+      ]
+    },
+    {
+      "Key": "ac202b2a-ccdc-4482-a393-0b8be1fe0ee3",
+      "Name": "Standard Hours (Local)",
+      "Alias": "standardHours(Local)",
+      "PropertyTypes": [
+        {
+          "Key": "ea41a94c-2d74-4879-a0f0-20583cda1ff4",
+          "Alias": "weeklyHours",
+          "DataType": "umb://data-type/5df56d47f6314abf91047272617d0d9a",
+          "Name": "Weekly Hours"
+        }
+      ]
+    },
+    {
+      "Key": "cb90003e-3be7-4662-9471-b70f58314f52",
+      "Name": "Office Location",
+      "SortOrder": 3,
+      "Alias": "officeLocation",
+      "PropertyTypes": [
+        {
+          "Key": "48aa74d8-e972-4ace-998a-50b7888f4f0d",
+          "Alias": "officeInfo",
+          "DataType": "umb://data-type/e70d44c78a194dbeaad99f42d0ad4e7d",
+          "Name": "Office Info",
+          "SortOrder": 1
+        },
+        {
+          "Key": "f97a3abb-be75-4d1b-a369-ed6d834caa82",
+          "Alias": "officeLocation",
+          "DataType": "umb://data-type/2ecf213d101c4c868690f5bca022a7dd",
+          "Name": "Office Location"
+        }
+      ]
+    }
+  ],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/219bcb661f244749bd9d1c5f39c8e6ef",
+  "Dependencies": [
+    {
+      "Udi": "umb://data-type/2ecf213d101c4c868690f5bca022a7dd",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/5df56d47f6314abf91047272617d0d9a",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/6617bbc778ed423c888a39f3e52e2f93",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/e70d44c78a194dbeaad99f42d0ad4e7d",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://template/019d3f3343ab7d60bbce4e56670b3fc4",
+      "Ordering": true,
+      "Mode": "Exist"
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "17.0.2"
+}

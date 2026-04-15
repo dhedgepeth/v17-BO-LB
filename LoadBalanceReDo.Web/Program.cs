@@ -59,6 +59,8 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 	options.KnownProxies.Clear();
 });
 
+builder.Services.AddHttpClient();
+
 umbracoBuilder.Build();
 
 WebApplication app = builder.Build();

@@ -1,0 +1,15 @@
+{
+  "Name": "Office",
+  "Alias": "Office",
+  "File": "umb://template-file/Office.cshtml",
+  "Udi": "umb://template/019d3f3343ab7d60bbce4e56670b3fc4",
+  "Dependencies": [
+    {
+      "Udi": "umb://template-file/Office.cshtml",
+      "Ordering": true,
+      "Mode": "Exist"
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.TemplateArtifact",
+  "__version": "17.0.2"
+}

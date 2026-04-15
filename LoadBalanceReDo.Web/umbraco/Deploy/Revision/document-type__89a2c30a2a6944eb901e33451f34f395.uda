@@ -1,0 +1,33 @@
+{
+  "Name": "Country",
+  "Alias": "country",
+  "DefaultTemplate": "umb://template/019d91e11abf7f169ddd6955e23a9346",
+  "AllowedTemplates": [
+    "umb://template/019d91e11abf7f169ddd6955e23a9346"
+  ],
+  "HistoryCleanup": {},
+  "Icon": "icon-globe color-blue",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "AllowedChildContentTypes": [
+      "umb://document-type/219bcb661f244749bd9d1c5f39c8e6ef"
+    ]
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/89a2c30a2a6944eb901e33451f34f395",
+  "Dependencies": [
+    {
+      "Udi": "umb://document-type/219bcb661f244749bd9d1c5f39c8e6ef",
+      "Mode": "Exist"
+    },
+    {
+      "Udi": "umb://template/019d91e11abf7f169ddd6955e23a9346",
+      "Ordering": true,
+      "Mode": "Exist"
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "17.0.2"
+}

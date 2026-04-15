@@ -1,0 +1,36 @@
+{
+  "$schema": "../../umbraco-package-schema.json",
+  "name": "OfficeLocationInfo",
+  "version": "0.1.0",
+  "extensions": [
+    {
+      "type": "propertyEditorUi",
+      "alias": "OfficeLocationInfo.PropertyEditorUi",
+      "name": "Office Location Info",
+      "element": "/App_Plugins/OfficeLocationInfo/office-location-info.js",
+      "elementName": "office-location-info",
+      "meta": {
+        "label": "Office Location Info",
+        "icon": "icon-globe",
+        "group": "common",
+        "propertyEditorSchemaAlias": "Umbraco.Plain.Json",
+        "settings": {
+          "properties": [
+            {
+              "alias": "geoPropertyAlias",
+              "label": "Geo Property Alias",
+              "description": "The alias of the UmbGeo property to read coordinates from",
+              "propertyEditorUiAlias": "Umb.PropertyEditorUi.TextString"
+            }
+          ],
+          "defaultData": [
+            {
+              "alias": "geoPropertyAlias",
+              "value": "officeLocation"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

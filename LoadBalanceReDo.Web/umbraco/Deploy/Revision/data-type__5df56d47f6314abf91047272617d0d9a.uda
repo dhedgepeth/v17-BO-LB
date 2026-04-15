@@ -1,0 +1,10 @@
+{
+  "Name": "Office -  - Weekly Hours",
+  "EditorAlias": "Umbraco.Plain.Json",
+  "EditorUiAlias": "WeeklyHours.PropertyEditorUi",
+  "Configuration": {},
+  "Udi": "umb://data-type/5df56d47f6314abf91047272617d0d9a",
+  "Dependencies": [],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.DataTypeArtifact",
+  "__version": "17.0.2"
+}

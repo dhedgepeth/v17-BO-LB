@@ -1,0 +1,34 @@
+{
+  "Name": "Home",
+  "Alias": "home",
+  "DefaultTemplate": "umb://template/019d3f3614447b88bd579b110b334617",
+  "AllowedTemplates": [
+    "umb://template/019d3f3614447b88bd579b110b334617"
+  ],
+  "HistoryCleanup": {},
+  "Icon": "icon-home",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "AllowedAtRoot": true,
+    "AllowedChildContentTypes": [
+      "umb://document-type/89a2c30a2a6944eb901e33451f34f395"
+    ]
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/3c504a592e404930ad9029852d77a93f",
+  "Dependencies": [
+    {
+      "Udi": "umb://document-type/89a2c30a2a6944eb901e33451f34f395",
+      "Mode": "Exist"
+    },
+    {
+      "Udi": "umb://template/019d3f3614447b88bd579b110b334617",
+      "Ordering": true,
+      "Mode": "Exist"
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "17.0.2"
+}

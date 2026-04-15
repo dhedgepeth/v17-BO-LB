@@ -1,0 +1,22 @@
+{
+  "Name": "Office - Hours Override - Block List",
+  "EditorAlias": "Umbraco.BlockList",
+  "EditorUiAlias": "Umb.PropertyEditorUi.BlockList",
+  "Configuration": {
+    "blocks": [
+      {
+        "contentElementTypeKey": "68d7976b-0c8a-4b46-b8e4-4b3b219023e9"
+      }
+    ],
+    "useInlineEditingAsDefault": false,
+    "useLiveEditing": true
+  },
+  "Udi": "umb://data-type/6617bbc778ed423c888a39f3e52e2f93",
+  "Dependencies": [
+    {
+      "Udi": "umb://document-type/68d7976b0c8a4b46b8e44b3b219023e9"
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.DataTypeArtifact",
+  "__version": "17.0.2"
+}

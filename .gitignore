@@ -355,6 +355,9 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
+*.pdf
+.claude/
+
 ##
 ## Umbraco CMS .NETCore
 ##

@@ -1,0 +1,60 @@
+{
+  "Name": "Holidays",
+  "Alias": "holidays",
+  "AllowedTemplates": [],
+  "HistoryCleanup": {},
+  "Icon": "icon-plugin",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "IsElementType": true,
+    "AllowedChildContentTypes": []
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [],
+  "PropertyTypes": [
+    {
+      "Key": "354a148f-e072-454d-9f85-fa53a7278db5",
+      "Alias": "adjustedOpeningTime",
+      "DataType": "umb://data-type/b425a7b4f3584c5e9cc8d3cfc9863bd3",
+      "Name": "Adjusted Opening Time",
+      "SortOrder": 2
+    },
+    {
+      "Key": "478da588-4e46-49fb-bcc2-310217599504",
+      "Alias": "adjustedClosingTime",
+      "DataType": "umb://data-type/b425a7b4f3584c5e9cc8d3cfc9863bd3",
+      "Name": "Adjusted Closing Time",
+      "SortOrder": 3
+    },
+    {
+      "Key": "62bee16b-edb3-46f1-a479-d368451e8ecf",
+      "Alias": "date",
+      "DataType": "umb://data-type/e5ab53389fcd4d8e92a81e98ecfce2a7",
+      "Name": "Date"
+    },
+    {
+      "Key": "7bb1c695-46cd-41dd-8c97-bdcdf198cb37",
+      "Alias": "annuallyReoccurring",
+      "DataType": "umb://data-type/012801bdac6b49f785de03b6b5973b6e",
+      "Name": "Annually Reoccurring ",
+      "SortOrder": 1
+    }
+  ],
+  "Udi": "umb://document-type/68d7976b0c8a4b46b8e44b3b219023e9",
+  "Dependencies": [
+    {
+      "Udi": "umb://data-type/012801bdac6b49f785de03b6b5973b6e",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/b425a7b4f3584c5e9cc8d3cfc9863bd3",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/e5ab53389fcd4d8e92a81e98ecfce2a7",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "17.0.2"
+}

@@ -1,0 +1,12 @@
+{
+  "Name": "Office -  - Time Only",
+  "EditorAlias": "Umbraco.TimeOnly",
+  "EditorUiAlias": "Umb.PropertyEditorUi.TimeOnlyPicker",
+  "Configuration": {
+    "timeFormat": "HH:mm"
+  },
+  "Udi": "umb://data-type/b425a7b4f3584c5e9cc8d3cfc9863bd3",
+  "Dependencies": [],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.DataTypeArtifact",
+  "__version": "17.0.2"
+}

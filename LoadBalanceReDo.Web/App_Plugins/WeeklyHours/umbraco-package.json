@@ -1,0 +1,20 @@
+{
+  "$schema": "../../umbraco-package-schema.json",
+  "name": "WeeklyHours",
+  "version": "0.1.0",
+  "extensions": [
+    {
+      "type": "propertyEditorUi",
+      "alias": "WeeklyHours.PropertyEditorUi",
+      "name": "Weekly Hours",
+      "element": "/App_Plugins/WeeklyHours/weekly-hours.js",
+      "elementName": "weekly-hours-editor",
+      "meta": {
+        "label": "Weekly Hours",
+        "icon": "icon-time",
+        "group": "common",
+        "propertyEditorSchemaAlias": "Umbraco.Plain.Json"
+      }
+    }
+  ]
+}

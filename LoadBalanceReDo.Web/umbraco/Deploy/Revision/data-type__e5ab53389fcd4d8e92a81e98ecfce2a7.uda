@@ -1,0 +1,10 @@
+{
+  "Name": "Holidays - Date - Date Only",
+  "EditorAlias": "Umbraco.DateOnly",
+  "EditorUiAlias": "Umb.PropertyEditorUi.DateOnlyPicker",
+  "Configuration": {},
+  "Udi": "umb://data-type/e5ab53389fcd4d8e92a81e98ecfce2a7",
+  "Dependencies": [],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.DataTypeArtifact",
+  "__version": "17.0.2"
+}
