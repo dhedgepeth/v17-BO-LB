@@ -60,6 +60,8 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 });
 
 builder.Services.AddHttpClient();
+builder.Services.AddScoped<LoadBalanceReDo.Web.Services.IOfficeHoursService, LoadBalanceReDo.Web.Services.OfficeHoursService>();
+builder.Services.AddScoped<LoadBalanceReDo.Web.Services.IIpGeolocationService, LoadBalanceReDo.Web.Services.IpGeolocationService>();
 
 umbracoBuilder.Build();
 

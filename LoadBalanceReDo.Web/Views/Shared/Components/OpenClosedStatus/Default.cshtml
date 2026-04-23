@@ -1,0 +1,46 @@
+@{
+    var isOpen = (bool)ViewBag.IsOpen;
+    var hoursJson = (string)ViewBag.HoursJson;
+    var timezoneId = (string)ViewBag.TimezoneId;
+    var timeUntilClose = ViewBag.TimeUntilClose as TimeSpan?;
+    var timeUntilNextOpen = ViewBag.TimeUntilNextOpen as TimeSpan?;
+    var size = (string)ViewBag.Size;
+    var badgeClass = isOpen ? "status-badge--open" : "status-badge--closed";
+}
+
+<div class="status-badge @badgeClass status-badge--@size"
+     data-tz="@timezoneId"
+     data-hours="@hoursJson">
+    <span class="status-badge__dot"></span>
+    <span class="status-badge__label">
+        @if (isOpen)
+        {
+            <text>Open</text>
+            if (timeUntilClose.HasValue)
+            {
+                <span class="status-badge__countdown">
+                    &middot; Closes in @FormatCountdown(timeUntilClose.Value)
+                </span>
+            }
+        }
+        else
+        {
+            <text>Closed</text>
+            if (timeUntilNextOpen.HasValue)
+            {
+                <span class="status-badge__countdown">
+                    &middot; Opens in @FormatCountdown(timeUntilNextOpen.Value)
+                </span>
+            }
+        }
+    </span>
+</div>
+
+@functions {
+    static string FormatCountdown(TimeSpan ts)
+    {
+        if (ts.TotalHours >= 24) return $"{(int)ts.TotalDays}d {ts.Hours}h";
+        if (ts.TotalHours >= 1) return $"{(int)ts.TotalHours}h {ts.Minutes}m";
+        return $"{ts.Minutes}m";
+    }
+}

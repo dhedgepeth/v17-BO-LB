@@ -1,6 +1,102 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using LoadBalanceReDo.Web.Services
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Office>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-	Layout = null;
+    Layout = null;
+    var detail = ViewBag.OfficeDetail as OfficeDetailViewModel;
+    var use12Hour = ViewBag.Use12HourFormat is true;
+    var timeFormat = use12Hour ? "h:mm tt" : "HH:mm";
+
+    // Display timezone: user's if we have one, else fall back to the office's, else UTC
+    var userTz = ViewBag.UserTimezone as TimeZoneInfo;
+    var displayTz = userTz ?? detail?.Hours.OfficeTimezone ?? TimeZoneInfo.Utc;
+    var usingUserTz = userTz != null && detail != null && userTz.Id != detail.Hours.OfficeTimezone.Id;
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@Model.Name - Office Details</title>
+</head>
+<body>
+    <header>
+        <h1>@Model.Name</h1>
+        @if (detail != null)
+        {
+            <p>@detail.City, @detail.Country</p>
+        }
+    </header>
+
+    <main>
+        @if (detail != null)
+        {
+            @await Component.InvokeAsync("OpenClosedStatus", new { hours = detail.Hours, size = "large" })
+
+            <section class="hours-table">
+                <h2>Opening Hours</h2>
+                <p class="hours-table__timezone-note">
+                    @if (usingUserTz)
+                    {
+                        <text>Times shown in your local timezone (@displayTz.Id, @detail.Hours.FormatOffset(displayTz)).
+                        Office is in @detail.Hours.OfficeTimezoneId (@detail.Hours.FormatOffset(detail.Hours.OfficeTimezone)).</text>
+                    }
+                    else
+                    {
+                        <text>Times shown in office local time (@detail.Hours.OfficeTimezoneId, @detail.Hours.FormatOffset(displayTz)).</text>
+                    }
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Hours</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var weekStart = DateOnly.FromDateTime(detail.Hours.NowInOfficeTimezone.DateTime);
+                            weekStart = weekStart.AddDays(-((int)weekStart.DayOfWeek + 6) % 7);
+                            if (weekStart.DayOfWeek == DayOfWeek.Sunday)
+                                weekStart = weekStart.AddDays(-6);
+                            var weekEnd = weekStart.AddDays(7);
+                        }
+                        @foreach (var day in detail.Hours.Days.Where(d => d.Date >= weekStart && d.Date < weekEnd))
+                        {
+                            var rowClass = day.IsToday ? "hours-table__today" : "";
+                            var sourceClass = day.Source == HoursSource.Override ? "hours-table__override" : "";
+                            var openDisplay = day.OpenIn(displayTz);
+                            var closeDisplay = day.CloseIn(displayTz);
+                            <tr class="@rowClass @sourceClass"
+                                data-tz="@displayTz.Id"
+                                data-time-open-utc="@day.OpenUtc?.ToString("o")"
+                                data-time-close-utc="@day.CloseUtc?.ToString("o")">
+                                <td>
+                                    @day.DayName
+                                    @if (day.IsToday) { <strong>(Today)</strong> }
+                                </td>
+                                <td>
+                                    @if (day.IsClosed)
+                                    {
+                                        <span class="hours-closed">Closed</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@openDisplay?.ToString(timeFormat) &ndash; @closeDisplay?.ToString(timeFormat)</span>
+                                    }
+                                    @if (day.Source == HoursSource.Override)
+                                    {
+                                        <span class="hours-modified">(Modified)</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+        }
+    </main>
+</body>
+</html>

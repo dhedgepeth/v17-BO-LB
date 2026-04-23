@@ -2,5 +2,81 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-	Layout = null;
+    Layout = null;
+    var cards = ViewBag.OfficeCards as List<OfficeCardViewModel> ?? new List<OfficeCardViewModel>();
+    var countries = ViewBag.Countries as List<string> ?? new List<string>();
+    var selectedCountry = ViewBag.SelectedCountry as string;
+    var userTimezone = ViewBag.UserTimezone as TimeZoneInfo;
+    var useImperial = ViewBag.UseImperialUnits is true;
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@Model.Name - Office Locations</title>
+</head>
+<body>
+    <header>
+        <h1>@Model.Name</h1>
+        @if (userTimezone != null)
+        {
+            <p class="timezone-note">Times shown in your local timezone (@userTimezone.Id)</p>
+        }
+    </header>
+
+    <main>
+        @if (countries.Any())
+        {
+            <form method="get" class="country-filter">
+                <label for="country">Filter by country</label>
+                <select name="country" id="country" onchange="this.form.submit()">
+                    <option value="">All countries</option>
+                    @foreach (var country in countries)
+                    {
+                        <option value="@country" selected="@(country.Equals(selectedCountry, StringComparison.OrdinalIgnoreCase))">
+                            @country
+                        </option>
+                    }
+                </select>
+                <noscript><button type="submit">Filter</button></noscript>
+            </form>
+        }
+
+        <div class="office-list" id="officeList">
+            @if (!cards.Any())
+            {
+                <p>No offices found.</p>
+            }
+
+            @foreach (var card in cards)
+            {
+                <article class="office-card"
+                         data-lat="@card.Latitude"
+                         data-lng="@card.Longitude"
+                         data-office-id="@card.Id">
+                    <h2><a href="@card.Url">@card.Name</a></h2>
+                    <p class="office-card__location">@card.City, @card.Country</p>
+                    <p class="office-card__distance" data-distance-placeholder>
+                        @if (card.DistanceKm.HasValue)
+                        {
+                            if (useImperial)
+                            {
+                                var miles = card.DistanceKm.Value * 0.621371;
+                                <span>@miles.ToString("0") miles away</span>
+                            }
+                            else
+                            {
+                                <span>@card.DistanceKm.Value.ToString("0") km away</span>
+                            }
+                        }
+                    </p>
+
+                    @await Component.InvokeAsync("OpenClosedStatus", new { hours = card.Hours, size = "small" })
+                </article>
+            }
+        </div>
+    </main>
+</body>
+</html>
