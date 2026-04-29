@@ -1,5 +1,5 @@
 {
-  "$schema": "../../umbraco-package-schema.json",
+  "$schema": "../../../umbraco-package-schema.json",
   "name": "OfficeLocationInfo",
   "version": "0.1.0",
   "extensions": [
