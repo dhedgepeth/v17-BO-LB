@@ -44,6 +44,13 @@ if (!string.IsNullOrEmpty(tempFileBlobConnectionString)
 	builder.Configuration["Umbraco:Storage:AzureBlob:TemporaryFile:ContainerName"] = tempFileBlobContainerName;
 }
 
+// Reuse the same blob connection string for Serilog logs unless one is set explicitly
+if (string.IsNullOrEmpty(builder.Configuration.GetConnectionString("umbracoLogs"))
+	&& !string.IsNullOrEmpty(tempFileBlobConnectionString))
+{
+	builder.Configuration["ConnectionStrings:umbracoLogs"] = tempFileBlobConnectionString;
+}
+
 var dpConnectionString = builder.Configuration["Umbraco:Storage:AzureBlob:Media:ConnectionString"];
 if (!string.IsNullOrEmpty(dpConnectionString))
 {
